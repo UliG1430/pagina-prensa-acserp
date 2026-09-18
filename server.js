@@ -194,9 +194,13 @@ async function route(request, response) {
     } catch (error) { return send(response, error.status || 400, { error: error.status === 413 ? 'El contenido supera el límite de 32 MB.' : 'No se pudo guardar el contenido.' }); }
   }
   if (request.method !== 'GET') return send(response, 405, { error: 'Método no permitido.' });
-  const requested = decodeURIComponent(['/', '/admin', '/admin/'].includes(url.pathname) ? '/pagina-independiente_4.html' : url.pathname);
+  if (url.pathname === '/content-bootstrap.js') {
+    try { return send(response, 200, `window.INITIAL_PRESS_CONTENT=${JSON.stringify(JSON.parse(await fs.readFile(CONTENT_FILE, 'utf8')))};\n`, 'text/javascript; charset=utf-8', { 'Cache-Control': 'no-cache' }); }
+    catch { return send(response, 500, 'No se pudo cargar el contenido.', 'text/plain; charset=utf-8'); }
+  }
+  const requested = decodeURIComponent(url.pathname === '/' ? '/pagina-independiente_4.html' : ['/admin', '/admin/'].includes(url.pathname) ? '/admin.html' : url.pathname);
   const publicExtension = /\.(html|css|png|jpe?g|gif|webp|svg|ico|pdf|mp4)$/i;
-  if (requested.split('/').some((part) => part.startsWith('.')) || (!publicExtension.test(requested) && !['/editor.js', '/content-model.js'].includes(requested)) || requested.includes('/node_modules/')) {
+  if (requested.split('/').some((part) => part.startsWith('.')) || (!publicExtension.test(requested) && !['/editor.js', '/public-content.js', '/content-model.js'].includes(requested)) || requested.includes('/node_modules/')) {
     return send(response, 404, 'No encontrado.', 'text/plain; charset=utf-8');
   }
   const filePath = path.resolve(ROOT, `.${requested}`);

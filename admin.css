@@ -1,0 +1,53 @@
+:root { --azul:#0b1f3a; --azul-osc:#081527; --cian:#17b8cc; --fondo:#f4f6fb; --texto:#14213d; --suave:#5a6785; --blanco:#fff; --borde:#e2e6f0; --rojo:#b3261e; --display:"Poppins","Segoe UI",sans-serif; --texto-font:"Inter","Segoe UI",sans-serif; }
+*,*::before,*::after { box-sizing:border-box; }
+body { margin:0; min-height:100vh; color:var(--texto); background:var(--fondo); font-family:var(--texto-font); line-height:1.5; }
+a { color:inherit; }
+:focus-visible { outline:3px solid #29d3e8; outline-offset:2px; }
+.encabezado-admin { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:14px clamp(18px,4vw,48px); color:var(--blanco); background:var(--azul); }
+.marca-admin { display:flex; align-items:center; gap:12px; color:inherit; text-decoration:none; }
+.marca-admin img { width:52px; height:52px; border-radius:50%; }
+.marca-admin span { display:flex; flex-direction:column; }
+.marca-admin strong { font:700 .95rem var(--display); }
+.marca-admin small { color:#aab6d1; }
+.volver-sitio { color:#fff; font:600 .8rem var(--display); text-underline-offset:4px; }
+.contenedor-admin { width:min(100% - 32px,980px); margin:42px auto; }
+.tarjeta-admin { padding:clamp(22px,4vw,38px); border:1px solid var(--borde); border-radius:16px; background:var(--blanco); box-shadow:0 14px 36px rgba(11,31,58,.09); }
+.tarjeta-login { width:min(100%,430px); margin:8vh auto 0; }
+.panel-admin { width:100%; }
+h1,h2 { margin:0 0 8px; font-family:var(--display); }
+h1 { font-size:1.35rem; } h2 { margin-top:24px; font-size:1rem; }
+.ayuda { margin:0 0 24px; color:var(--suave); font-size:.9rem; }
+.cabecera-panel { display:flex; align-items:flex-start; justify-content:space-between; gap:20px; }
+.campo-admin { margin-bottom:17px; }
+.campo-admin label { display:block; margin-bottom:6px; font:600 .8rem var(--display); }
+.campo-admin input,.campo-admin textarea { width:100%; padding:11px 12px; border:1px solid var(--borde); border-radius:8px; background:var(--fondo); color:var(--texto); font:.87rem var(--texto-font); }
+.campo-admin textarea { min-height:80px; resize:vertical; }
+.campo-admin small { display:block; margin-top:6px; color:var(--suave); font-size:.75rem; }
+.mensaje-error { min-height:1.25em; margin:0 0 12px; color:var(--rojo); font-size:.82rem; }
+.recuperar-admin { display:inline-block; margin-top:16px; color:var(--azul); font:600 .8rem var(--display); text-underline-offset:3px; }
+.fila-admin { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+.margen-inferior { margin-bottom:20px; }
+.boton-admin { padding:11px 20px; border:0; border-radius:999px; font:600 .82rem var(--display); cursor:pointer; }
+.boton-ancho { width:100%; }
+.boton-admin--principal { color:#fff; background:var(--azul); }
+.boton-admin--principal:hover { background:var(--cian); }
+.boton-admin--secundario { color:var(--texto); background:var(--fondo); border:1px solid var(--borde); }
+.boton-admin--peligro { color:var(--rojo); background:#fdeceb; }
+.pestanias-admin { display:flex; flex-wrap:wrap; gap:8px; margin:20px 0 18px; }
+.pestania-admin { padding:9px 16px; border:1px solid var(--borde); border-radius:999px; color:var(--suave); background:#fff; font:600 .78rem var(--display); cursor:pointer; }
+.pestania-admin[aria-selected="true"],.pestania-admin[aria-pressed="true"] { color:#fff; border-color:var(--azul); background:var(--azul); }
+.aviso-admin { margin:18px 0; padding:10px 14px; border:1px solid #cfe6fb; border-radius:10px; color:#14507d; background:#eef7ff; font-size:.8rem; }
+#estado-editor { min-height:1.3em; color:#14507d; font-size:.85rem; }
+#estado-editor.error { color:var(--rojo); }
+.lista-admin { display:flex; flex-direction:column; gap:10px; max-height:340px; overflow-y:auto; margin-top:24px; padding-top:18px; border-top:1px solid var(--borde); }
+.item-admin { display:flex; align-items:center; gap:12px; padding:9px 10px; border:1px solid var(--borde); border-radius:10px; }
+.item-admin img { width:64px; height:46px; object-fit:cover; border-radius:6px; background:#102a52; }
+.item-admin__texto { flex:1; min-width:0; overflow:hidden; color:var(--suave); font-size:.8rem; text-overflow:ellipsis; white-space:nowrap; }
+.item-admin__acciones { display:flex; gap:6px; }
+.vista-previa-imagenes { display:flex; flex-wrap:wrap; gap:12px; margin-top:12px; }
+.vista-previa-imagenes figure { margin:0; width:110px; }
+.vista-previa-imagenes img { width:110px; height:80px; object-fit:contain; border-radius:8px; background:#eef2f6; }
+.vista-previa-imagenes figcaption { font-size:.72rem; overflow-wrap:anywhere; }
+button:disabled { opacity:.5; cursor:wait; }
+[hidden] { display:none !important; }
+@media (max-width:640px) { .contenedor-admin { width:min(100% - 20px,980px); margin:20px auto; } .encabezado-admin { align-items:flex-start; } .marca-admin small { display:none; } .volver-sitio { text-align:right; } .cabecera-panel { flex-direction:column; } .item-admin { align-items:flex-start; flex-wrap:wrap; } .item-admin__acciones { width:100%; } }

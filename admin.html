@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administración · Información Global</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+  <header class="encabezado-admin">
+    <a href="/" class="marca-admin" aria-label="Ir a Información Global">
+      <img src="/sello.png" width="52" height="52" alt="">
+      <span><strong>Información Global</strong><small>Administración editorial</small></span>
+    </a>
+    <a href="/" class="volver-sitio">Ver sitio público ↗</a>
+  </header>
+
+  <main class="contenedor-admin">
+    <section id="vista-login-admin" class="tarjeta-admin tarjeta-login" aria-labelledby="titulo-login-admin">
+      <h1 id="titulo-login-admin">Acceso al panel</h1>
+      <p class="ayuda">Ingresá con el mismo correo y contraseña de administrador que usás en la web de ACSERP.</p>
+      <form id="form-login-admin">
+        <div class="campo-admin"><label for="input-correo-admin">Correo electrónico</label><input type="email" id="input-correo-admin" required autocomplete="email" placeholder="tu correo autorizado"></div>
+        <div class="campo-admin"><label for="input-clave-admin">Contraseña</label><input type="password" id="input-clave-admin" required autocomplete="current-password"></div>
+        <p id="error-login-admin" class="mensaje-error" role="alert"></p>
+        <button type="submit" class="boton-admin boton-admin--principal boton-ancho">Ingresar</button>
+      </form>
+      <a class="recuperar-admin" href="https://acserp.org.ar/admin" target="_blank" rel="noopener noreferrer">Recuperar acceso desde ACSERP ↗</a>
+    </section>
+
+    <section id="vista-panel-admin" class="tarjeta-admin panel-admin" aria-labelledby="titulo-panel-admin" hidden>
+      <div class="cabecera-panel">
+        <div><h1 id="titulo-panel-admin">Panel de administración</h1><p class="ayuda">Elegí qué subir o modificar, la imagen, el enlace y el texto de cada tarjeta.</p></div>
+        <button type="button" id="boton-cerrar-sesion-admin" class="boton-admin boton-admin--secundario">Cerrar sesión</button>
+      </div>
+      <div class="aviso-admin">Los cambios quedan guardados en el servidor y disponibles para todos los visitantes.</div>
+      <div class="pestanias-admin" role="tablist" aria-label="Sección a editar">
+        <button type="button" class="pestania-admin" data-tipo="diarios" aria-selected="true">Diarios</button>
+        <button type="button" class="pestania-admin" data-tipo="entrevistas" aria-selected="false">Entrevistas</button>
+        <button type="button" class="pestania-admin" data-tipo="noticieros" aria-selected="false">Noticieros</button>
+        <button type="button" class="pestania-admin" data-tipo="encabezado" aria-selected="false">Encabezado</button>
+        <button type="button" class="pestania-admin" data-tipo="pie" aria-selected="false">Pie de página</button>
+      </div>
+      <p id="estado-editor" role="status" aria-live="polite"></p>
+      <div id="editor-tarjetas">
+        <div class="pestanias-admin" id="pestanias-carruseles" aria-label="Carruseles"></div>
+        <div class="fila-admin margen-inferior">
+          <button type="button" id="agregar-carrusel" class="boton-admin boton-admin--secundario">Agregar carrusel</button>
+          <button type="button" id="eliminar-carrusel" class="boton-admin boton-admin--peligro">Eliminar carrusel</button>
+        </div>
+        <form id="form-item-admin">
+          <h2 id="titulo-form-item">Agregar nueva tarjeta</h2>
+          <div class="campo-admin">
+            <label for="input-imagen-archivo">Subir imágenes desde tu dispositivo</label>
+            <input type="file" id="input-imagen-archivo" accept="image/jpeg,image/png,image/webp,image/gif" multiple>
+            <small>JPG, PNG, WebP o GIF. Máximo 20 MB por archivo y 20 imágenes por tarjeta. Esperá la vista previa y luego guardá la tarjeta.</small>
+          </div>
+          <div class="campo-admin">
+            <label for="input-imagen-url">Direcciones de las imágenes</label>
+            <textarea id="input-imagen-url" placeholder="https://sitio.com/portada.jpg&#10;/uploads/imagen.png"></textarea>
+            <small>Una dirección por renglón. La carga desde tu dispositivo completa este campo automáticamente. También podés pegar un enlace público directo o usar un archivo del proyecto.</small>
+            <div id="vista-previa-imagenes" class="vista-previa-imagenes"></div>
+          </div>
+          <div class="campo-admin" id="campo-video-admin" hidden><label for="input-video-admin">Video de previsualización (opcional)</label><input type="text" id="input-video-admin" placeholder="https://sitio.com/video.mp4"><small>Enlace directo a un MP4 público. Se muestran hasta 5 segundos al pasar el mouse.</small></div>
+          <div class="campo-admin"><label for="input-link-admin">Enlace al contenido completo (opcional)</label><input type="text" id="input-link-admin" placeholder="https://sitio.com/noticia o archivo.pdf"><small>Destino de la tarjeta: noticia, PDF o video.</small></div>
+          <div class="campo-admin"><label for="input-texto-admin">Texto de la tarjeta</label><textarea id="input-texto-admin" maxlength="2000" required placeholder="Descripción breve"></textarea><small>Hasta 2000 caracteres.</small></div>
+          <div class="fila-admin"><button type="submit" id="boton-guardar-item" class="boton-admin boton-admin--principal">Agregar tarjeta</button><button type="button" id="boton-cancelar-edicion" class="boton-admin boton-admin--secundario" hidden>Cancelar edición</button></div>
+        </form>
+        <div class="lista-admin" id="lista-items-admin"></div>
+      </div>
+      <form id="form-textos-admin" hidden>
+        <div id="campos-encabezado">
+          <div class="campo-admin"><label for="input-titulo">Título de bienvenida</label><input id="input-titulo" maxlength="200"></div>
+          <div class="campo-admin"><label for="input-introduccion">Texto de introducción</label><textarea id="input-introduccion" maxlength="10000" rows="6"></textarea></div>
+          <div class="campo-admin"><label for="input-lema">Texto junto al logo</label><input id="input-lema" maxlength="200"></div>
+        </div>
+        <div id="campos-pie" class="campo-admin"><label for="input-pie">Texto del pie de página</label><textarea id="input-pie" maxlength="2000" rows="4"></textarea></div>
+        <button type="submit" class="boton-admin boton-admin--principal">Guardar texto</button>
+      </form>
+    </section>
+  </main>
+  <script src="/content-model.js"></script>
+  <script src="/editor.js"></script>
+</body>
+</html>

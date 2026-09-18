@@ -194,38 +194,6 @@
   .tarjeta-recurso:hover .noticiero-preview.con-video img, .tarjeta-recurso:focus-within .noticiero-preview.con-video img { opacity: 0; }
   .diario-carrusel[data-diario="noticieros"] .tarjeta-recurso__descripcion { height: 79px; min-height: 79px; max-height: 79px; padding: 18px 20px; overflow: hidden; }
 
-  .overlay-admin { position: fixed; inset: 0; z-index: 200; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(8,15,27,.72); }
-  .overlay-admin.abierto { display: flex; }
-  .caja-admin { position: relative; width: 100%; max-width: 720px; max-height: 88vh; overflow-y: auto; padding: 28px; background: var(--blanco); border-radius: var(--radio); box-shadow: 0 30px 60px rgba(0,0,0,.35); }
-  .caja-admin--login { max-width: 380px; }
-  .caja-admin h3 { font-family: var(--fuente-display); margin: 0 0 6px; font-size: 1.2rem; }
-  .caja-admin p.ayuda { color: var(--texto-suave); font-size: .85rem; margin: 0 0 20px; }
-  .recuperar-admin { display: inline-block; margin-top: 14px; color: var(--azul-marino); font: 600 .8rem var(--fuente-display); text-decoration: underline; text-underline-offset: 3px; }
-  .recuperar-admin:hover { color: var(--cian-osc); }
-  .cerrar-admin { position: absolute; top: 14px; right: 14px; border: 0; background: transparent; color: var(--texto-suave); font-size: 1.4rem; cursor: pointer; }
-  .campo-admin { margin-bottom: 16px; }
-  .campo-admin label { display: block; margin-bottom: 6px; font-family: var(--fuente-display); font-weight: 600; font-size: .8rem; }
-  .campo-admin input, .campo-admin select, .campo-admin textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--borde); border-radius: 8px; background: var(--fondo); font: .85rem var(--fuente-texto); }
-  .campo-admin textarea { min-height: 70px; resize: vertical; }
-  .campo-admin small { display: block; margin-top: 6px; color: var(--texto-suave); font-size: .75rem; }
-  .fila-admin, .acciones-admin-final { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
-  .boton-admin { padding: 11px 20px; border: 0; border-radius: 999px; font: 600 .82rem var(--fuente-display); cursor: pointer; }
-  .boton-admin--principal { color: var(--blanco); background: var(--azul-marino); }
-  .boton-admin--principal:hover { background: var(--cian-osc); }
-  .boton-admin--secundario { color: var(--texto); background: var(--fondo); border: 1px solid var(--borde); }
-  .boton-admin--peligro { color: #b3261e; background: #fdeceb; }
-  .pestanias-admin { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
-  .pestania-admin { padding: 9px 16px; border: 1px solid var(--borde); border-radius: 999px; color: var(--texto-suave); background: var(--blanco); font: 600 .78rem var(--fuente-display); cursor: pointer; }
-  .pestania-admin[aria-selected="true"] { color: var(--blanco); background: var(--azul-marino); border-color: var(--azul-marino); }
-  .lista-admin { display: flex; flex-direction: column; gap: 10px; max-height: 260px; overflow-y: auto; margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--borde); }
-  .item-admin { display: flex; align-items: center; gap: 12px; padding: 8px 10px; border: 1px solid var(--borde); border-radius: 10px; }
-  .item-admin img { width: 56px; height: 40px; object-fit: cover; border-radius: 6px; background: var(--azul-tarjeta); }
-  .item-admin__texto { flex: 1; min-width: 0; overflow: hidden; color: var(--texto-suave); font-size: .8rem; text-overflow: ellipsis; white-space: nowrap; }
-  .item-admin__acciones { display: flex; gap: 6px; }
-  .aviso-admin { margin-bottom: 16px; padding: 10px 14px; border: 1px solid #cfe6fb; border-radius: 10px; color: #14507d; background: #eef7ff; font-size: .78rem; }
-  .boton-pie-admin { display: block; margin: 12px auto 0; padding: 3px 7px; border: 1px solid transparent; border-radius: 5px; color: rgba(170,182,209,.45); background: transparent; font: 500 .62rem var(--fuente-texto); cursor: pointer; opacity: .55; }
-  .boton-pie-admin:hover, .boton-pie-admin:focus-visible { color: var(--cian); border-color: rgba(41,211,232,.35); opacity: 1; }
-
   @media (max-width: 980px) {
     .rejilla-recursos { grid-template-columns: repeat(2, 1fr); }
     .rejilla-diarios { grid-template-columns: 1fr; }
@@ -257,24 +225,15 @@
     .carrusel-flecha { display: none; }
     .contenedor { padding: 32px 16px; }
     .boton-top-secret { width: 100%; text-align: center; }
-    .caja-admin { padding: 20px; }
   }
 
   .tarjeta-recurso__imagen > .noticiero-preview { position: absolute; inset: 0; height: 100%; padding: 0; }
-  .pestania-admin[aria-pressed="true"] { color: white; background: var(--azul-marino); }
   [data-track] { position: relative; }
   .carrusel-unico [data-track] { justify-content: center; mask-image: none; -webkit-mask-image: none; }
   .carrusel-unico article { opacity: 1; filter: none; transform: none; }
   [hidden] { display: none !important; }
   #texto-introduccion, #texto-pie { white-space: pre-line; }
-  #estado-editor { font-size: .85rem; color: #14507d; }
-  #estado-editor.error { color: #b3261e; }
-  .vista-previa-imagenes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
-  .vista-previa-imagenes figure { margin: 0; width: 110px; }
-  .vista-previa-imagenes img { width: 110px; height: 80px; object-fit: contain; background: #eef2f6; border-radius: 8px; }
-  .vista-previa-imagenes figcaption { font-size: .72rem; overflow-wrap: anywhere; }
   .galeria-controles { display: flex; justify-content: center; gap: 8px; padding: 6px; }
-  button:disabled { opacity: .5; cursor: wait; }
 </style>
 </head>
 <body>
@@ -368,76 +327,9 @@
     <span id="texto-pie">INFORMACIÓN GLOBAL · COBERTURA MUNDIAL · Septiembre, 2026 · Contenido editorial de solo lectura</span>
   </footer>
 
-  <div class="overlay-admin" id="overlay-login-admin">
-    <div class="caja-admin caja-admin--login">
-      <button type="button" class="cerrar-admin" data-cerrar-admin aria-label="Cerrar">×</button>
-      <h3>Acceso al panel</h3>
-      <p class="ayuda">Ingresá con el mismo correo y contraseña de administrador que usás en la web de ACSERP.</p>
-      <form id="form-login-admin">
-        <div class="campo-admin"><label for="input-correo-admin">Correo electrónico</label><input type="email" id="input-correo-admin" required autocomplete="email" placeholder="tu correo autorizado"></div>
-        <div class="campo-admin"><label for="input-clave-admin">Contraseña</label><input type="password" id="input-clave-admin" required autocomplete="current-password"></div>
-        <p id="error-login-admin" style="color:#b3261e;font-size:.8rem;min-height:1em;margin:0 0 12px;"></p>
-        <button type="submit" class="boton-admin boton-admin--principal" style="width:100%;">Ingresar</button>
-      </form>
-      <a class="recuperar-admin" href="https://acserp.org.ar/admin" target="_blank" rel="noopener noreferrer">Recuperar acceso desde ACSERP ↗</a>
-    </div>
-  </div>
-
-  <div class="overlay-admin" id="overlay-panel-admin">
-    <div class="caja-admin">
-      <button type="button" class="cerrar-admin" data-cerrar-admin aria-label="Cerrar">×</button>
-      <h3>Panel de administración</h3>
-      <p class="ayuda">Elegí qué subir o modificar, la imagen, el link al archivo y el texto de cada tarjeta.</p>
-      <div class="aviso-admin">Los cambios quedan guardados en el servidor y quedan disponibles para todos los visitantes autorizados.</div>
-      <div class="pestanias-admin" role="tablist" aria-label="Sección a editar">
-        <button type="button" class="pestania-admin" data-tipo="diarios" aria-selected="true">Diarios</button>
-        <button type="button" class="pestania-admin" data-tipo="entrevistas" aria-selected="false">Entrevistas</button>
-        <button type="button" class="pestania-admin" data-tipo="noticieros" aria-selected="false">Noticieros</button>
-        <button type="button" class="pestania-admin" data-tipo="encabezado" aria-selected="false">Encabezado</button>
-        <button type="button" class="pestania-admin" data-tipo="pie" aria-selected="false">Pie de página</button>
-      </div>
-      <p id="estado-editor" role="status" aria-live="polite"></p>
-      <div id="editor-tarjetas">
-        <div class="pestanias-admin" id="pestanias-carruseles" aria-label="Carruseles"></div>
-        <div class="fila-admin" style="margin-bottom:20px">
-          <button type="button" id="agregar-carrusel" class="boton-admin boton-admin--secundario">Agregar carrusel</button>
-          <button type="button" id="eliminar-carrusel" class="boton-admin boton-admin--peligro">Eliminar carrusel</button>
-        </div>
-        <form id="form-item-admin">
-          <h4 id="titulo-form-item">Agregar nueva tarjeta</h4>
-          <div class="campo-admin">
-            <label for="input-imagen-archivo">Subir imágenes desde tu dispositivo</label>
-            <input type="file" id="input-imagen-archivo" accept="image/jpeg,image/png,image/webp,image/gif" multiple>
-            <small>JPG, PNG, WebP o GIF. Máximo 20 MB por archivo y 20 imágenes por tarjeta. Esperá la vista previa y luego guardá la tarjeta.</small>
-          </div>
-          <div class="campo-admin">
-            <label for="input-imagen-url">Direcciones de las imágenes</label>
-            <textarea id="input-imagen-url" placeholder="https://sitio.com/portada.jpg&#10;/uploads/imagen.png"></textarea>
-            <small>Una dirección por renglón. La carga desde tu dispositivo completa este campo automáticamente. También podés pegar un enlace público directo a la imagen o el nombre de un archivo que ya exista en el proyecto (por ejemplo, sello.png). No uses rutas de tu computadora ni enlaces a páginas de Google Drive o Canva.</small>
-            <div id="vista-previa-imagenes" class="vista-previa-imagenes"></div>
-          </div>
-          <div class="campo-admin" id="campo-video-admin" hidden><label for="input-video-admin">Video de previsualización (opcional)</label><input type="text" id="input-video-admin" placeholder="https://sitio.com/video.mp4"><small>Enlace directo a un MP4 público o archivo que ya exista en el proyecto. Se muestran hasta 5 segundos al pasar el mouse. Para YouTube, usá el enlace al contenido completo.</small></div>
-          <div class="campo-admin"><label for="input-link-admin">Enlace al contenido completo (opcional)</label><input type="text" id="input-link-admin" placeholder="https://sitio.com/noticia o archivo.pdf"><small>Destino que se abre al tocar la tarjeta: noticia, PDF o video. Es independiente de la imagen de portada. Escribir el nombre de un archivo no lo sube.</small></div>
-          <div class="campo-admin"><label for="input-texto-admin">Texto de la tarjeta</label><textarea id="input-texto-admin" maxlength="2000" required placeholder="Descripción breve"></textarea><small>Hasta 2000 caracteres.</small></div>
-          <div class="fila-admin"><button type="submit" id="boton-guardar-item" class="boton-admin boton-admin--principal">Agregar tarjeta</button><button type="button" id="boton-cancelar-edicion" class="boton-admin boton-admin--secundario" hidden>Cancelar edición</button></div>
-        </form>
-        <div class="lista-admin" id="lista-items-admin"></div>
-      </div>
-      <form id="form-textos-admin" hidden>
-        <div id="campos-encabezado">
-          <div class="campo-admin"><label for="input-titulo">Título de bienvenida</label><input id="input-titulo" maxlength="200"></div>
-          <div class="campo-admin"><label for="input-introduccion">Texto de introducción</label><textarea id="input-introduccion" maxlength="10000" rows="6"></textarea></div>
-          <div class="campo-admin"><label for="input-lema">Texto junto al logo</label><input id="input-lema" maxlength="200"></div>
-        </div>
-        <div id="campos-pie" class="campo-admin"><label for="input-pie">Texto del pie de página</label><textarea id="input-pie" maxlength="2000" rows="4"></textarea></div>
-        <button type="submit" class="boton-admin boton-admin--principal">Guardar texto</button>
-      </form>
-      <div class="acciones-admin-final" style="justify-content:flex-start;margin-top:22px"><button type="button" id="boton-cerrar-sesion-admin" class="boton-admin boton-admin--secundario">Cerrar sesión</button></div>
-    </div>
-  </div>
-
   <script src="content-model.js"></script>
-  <script src="editor.js"></script>
+  <script src="content-bootstrap.js"></script>
+  <script src="public-content.js"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
