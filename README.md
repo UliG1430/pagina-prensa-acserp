@@ -25,7 +25,7 @@ Las noticias siguen guardándose en `content.json` de este proyecto; no se mezcl
 
 El repositorio está listo para Netlify. `netlify.toml` define `npm run build`, el directorio `dist`, Functions y Node 22. La Function usa Netlify Blobs para conservar `content` e imágenes entre deploys; las imágenes de hasta 20 MB se suben en fragmentos para respetar el límite de cada request.
 
-Configurá `SUPABASE_URL` y `SUPABASE_PUBLISHABLE_KEY` con los mismos valores de `web-acserp`, y generá `SESSION_ENCRYPTION_KEY` como 32 bytes hexadecimales. Luego asigná `prensa.acserp.org.ar` como dominio de producción. No se necesita crear tablas ni buckets en Supabase.
+Configurá `SUPABASE_URL` y `SUPABASE_PUBLISHABLE_KEY` con los mismos valores de `web-acserp`. Luego asigná `prensa.acserp.org.ar` como dominio de producción. No se necesita crear tablas ni buckets en Supabase; las sesiones opacas se conservan en Netlify Blobs.
 
 ## Verificación
 
