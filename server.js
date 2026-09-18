@@ -194,7 +194,7 @@ async function route(request, response) {
     } catch (error) { return send(response, error.status || 400, { error: error.status === 413 ? 'El contenido supera el límite de 32 MB.' : 'No se pudo guardar el contenido.' }); }
   }
   if (request.method !== 'GET') return send(response, 405, { error: 'Método no permitido.' });
-  const requested = decodeURIComponent(url.pathname === '/' ? '/pagina-independiente_4.html' : url.pathname);
+  const requested = decodeURIComponent(['/', '/admin', '/admin/'].includes(url.pathname) ? '/pagina-independiente_4.html' : url.pathname);
   const publicExtension = /\.(html|css|png|jpe?g|gif|webp|svg|ico|pdf|mp4)$/i;
   if (requested.split('/').some((part) => part.startsWith('.')) || (!publicExtension.test(requested) && !['/editor.js', '/content-model.js'].includes(requested)) || requested.includes('/node_modules/')) {
     return send(response, 404, 'No encontrado.', 'text/plain; charset=utf-8');

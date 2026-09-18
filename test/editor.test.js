@@ -7,9 +7,10 @@ const tick = () => new Promise(resolve => setImmediate(resolve));
 
 test('Editor: carruseles por sección, imágenes, textos y errores de guardado', async t => {
   const html = fs.readFileSync(require.resolve('../pagina-independiente_4.html'), 'utf8');
-  const dom = new JSDOM(html, { url: 'http://localhost:3000', runScripts: 'outside-only', pretendToBeVisual: true });
+  const dom = new JSDOM(html, { url: 'http://localhost:3000/admin', runScripts: 'outside-only', pretendToBeVisual: true });
   t.after(() => dom.window.close());
   const w = dom.window, d = w.document, $ = id => d.getElementById(id);
+  assert.equal($('boton-abrir-admin'), null, 'la landing no expone un botón de acceso editorial');
   assert.equal(d.querySelector('.recuperar-admin').href, 'https://acserp.org.ar/admin', 'password recovery points to web-acserp');
   const image = 'data:image/png;base64,iVBORw0KGgo=';
   let stored = Model.normalize({ diarios: [[{ imagenes: [image], texto: 'Original', link: '' }], [], []], entrevistas: [], noticieros: [] });
@@ -27,6 +28,7 @@ test('Editor: carruseles por sección, imágenes, textos y errores de guardado',
   };
   w.eval(fs.readFileSync(require.resolve('../content-model.js'), 'utf8'));
   w.eval(fs.readFileSync(require.resolve('../editor.js'), 'utf8')); await tick();
+  assert.equal($('overlay-login-admin').classList.contains('abierto'), true, '/admin abre el acceso editorial');
   const select = async type => { d.querySelector(`[data-tipo="${type}"]`).click(); await tick(); };
   const count = () => d.querySelectorAll('[data-carrusel]').length;
   assert.deepEqual(Array.from(d.querySelectorAll('[data-tipo]')).slice(0, 3).map(n => n.dataset.tipo), ['diarios', 'entrevistas', 'noticieros']);

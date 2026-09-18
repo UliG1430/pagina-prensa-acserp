@@ -194,8 +194,11 @@
   $('form-textos-admin').onsubmit = async event => {
     event.preventDefault(); await save(next => { for (const key of tipo === 'pie' ? ['pie'] : ['titulo', 'introduccion', 'lema']) next.textos[key] = $('input-' + key).value; });
   };
-  $('boton-abrir-admin').onclick = () => { $('overlay-login-admin').classList.add('abierto'); $('input-correo-admin').focus(); };
-  document.querySelectorAll('[data-cerrar-admin]').forEach(button => { button.onclick = () => { $('overlay-login-admin').classList.remove('abierto'); $('overlay-panel-admin').classList.remove('abierto'); }; });
+  const isAdminPage = /^\/admin(?:\/|$)/.test(window.location.pathname);
+  document.querySelectorAll('[data-cerrar-admin]').forEach(button => { button.onclick = () => {
+    $('overlay-login-admin').classList.remove('abierto'); $('overlay-panel-admin').classList.remove('abierto');
+    if (isAdminPage) window.location.assign('/');
+  }; });
   $('form-login-admin').onsubmit = async event => {
     event.preventDefault(); $('error-login-admin').textContent = '';
     try {
@@ -207,5 +210,8 @@
   $('boton-cerrar-sesion-admin').onclick = async () => {
     try { await api('/api/logout', { method: 'POST' }); $('overlay-panel-admin').classList.remove('abierto'); } catch (error) { status(error.message, true); }
   };
-  api('/api/content').then(data => { contenido = normalize(data); renderPage(); renderEditor(); }).catch(() => { $('error-login-admin').textContent = 'No se pudo cargar el contenido. Recargá la página antes de editar.'; });
+  api('/api/content').then(data => {
+    contenido = normalize(data); renderPage(); renderEditor();
+    if (isAdminPage) { $('overlay-login-admin').classList.add('abierto'); $('input-correo-admin').focus(); }
+  }).catch(() => { $('error-login-admin').textContent = 'No se pudo cargar el contenido. Recargá la página antes de editar.'; });
 })();

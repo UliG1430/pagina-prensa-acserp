@@ -11,7 +11,7 @@ Requiere Node.js 22 o posterior.
 
 ## Acceso editorial
 
-Al pie de la página, seleccioná **Acceso editorial** e ingresá con el mismo correo y contraseña de administrador de la web de ACSERP. Supabase debe asignar al usuario `app_metadata.role = "admin"`, igual que en `web-acserp`. Los usuarios sin ese rol no pueden acceder. No se usa `user_metadata` para autorizar.
+Abrí `/admin` e ingresá con el mismo correo y contraseña de administrador de la web de ACSERP. La landing pública no muestra un enlace al panel. Supabase debe asignar al usuario `app_metadata.role = "admin"`, igual que en `web-acserp`. Los usuarios sin ese rol no pueden acceder. No se usa `user_metadata` para autorizar.
 
 Ambos sitios comparten la cuenta y la contraseña, pero mantienen sesiones independientes: iniciar sesión en uno no abre automáticamente el otro. Para recuperar la contraseña, usá la opción de recuperación de la web de ACSERP.
 
@@ -35,7 +35,7 @@ Configurá `SUPABASE_URL` y `SUPABASE_PUBLISHABLE_KEY` con los mismos valores de
 
 Las pestañas siguen el orden de la página: Diarios, Entrevistas y Noticieros. Cada sección permite agregar o eliminar carruseles (hasta 20 por sección y 100 tarjetas por carrusel). Eliminar un carrusel pide confirmación y elimina sus tarjetas de la página. Se puede dejar una sección sin carruseles. Los datos anteriores se adaptan al abrirlos sin perder tarjetas ni imágenes.
 
-Encabezado permite editar el título de bienvenida, la introducción y el lema junto al logo. Pie de página modifica el texto sobre Acceso editorial. Los textos se guardan como texto plano.
+Encabezado permite editar el título de bienvenida, la introducción y el lema junto al logo. Pie de página modifica el texto del pie público. Los textos se guardan como texto plano.
 
 ### Imágenes y campos de las tarjetas
 
